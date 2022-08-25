@@ -18,9 +18,16 @@ function university_features() {
 }
 
 add_action('after_setup_theme', 'university_features');
-/*Event Posts*/
+
 function university_adjust_queries($query){
-  /*set the no of posts equal to 1 only on the event posts*/
+   /*Program Archive Posts*/
+  /*set the no of posts equal to 1 only on the program posts*/
+  if(!is_admin() AND is_post_type_archive('program') AND is_main_query()){
+    $query -> set('orderby', 'title');
+    $query -> set('order','ASC');
+  $query -> set('posts_per_page', -1);
+  } 
+  /*Event Archive Posts*/
   if(!is_admin() AND is_post_type_archive('event') AND is_main_query()){
     $today = date('Ymd');
     $query -> set('meta_key','event_date');
