@@ -135,7 +135,7 @@ function universitySearchResults($data) {
       }
 
     }
-    //Removes the duplicates from the subarray
+
     $results['professors'] = array_values(array_unique($results['professors'], SORT_REGULAR));
     $results['events'] = array_values(array_unique($results['events'], SORT_REGULAR));
   }
